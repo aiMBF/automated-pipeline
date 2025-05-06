@@ -1,4 +1,4 @@
-# 📊 FastAPI Monitoring with Prometheus & Grafana
+# 📊 Simple Pipeline Monitoring with Prometheus & Grafana & FastAPI
 
 This project sets up a complete monitoring pipeline for a simulated FastAPI service, using **Prometheus** for metrics collection and **Grafana** for visualization. It includes automatic load simulation and exposes custom metrics like request volume, error rate, and latency.
 

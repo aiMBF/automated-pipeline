@@ -1,0 +1,42 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - monitor-net
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - monitor-net
+
+  api:
+    build: ./api
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    networks:
+      - monitor-net
+
+  poll:
+    build: ./poll
+    depends_on:
+      - api
+    networks:
+      - monitor-net
+
+networks:
+  monitor-net:
+    driver: bridge
+
+volumes:
+  grafana-storage:

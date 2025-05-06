@@ -1,0 +1,106 @@
+{
+  "id": null,
+  "uid": null,
+  "title": "FastAPI Monitoring - Minimal",
+  "timezone": "browser",
+  "schemaVersion": 37,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Requests per Second",
+      "targets": [
+        {
+          "expr": "rate(api_requests_total[1m])",
+          "legendFormat": "{{http_status}}",
+          "refId": "A"
+        }
+      ],
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Errors 500",
+      "targets": [
+        {
+          "expr": "sum(api_requests_total{http_status=\"500\"})",
+          "legendFormat": "500",
+          "refId": "B"
+        }
+      ],
+      "gridPos": {
+        "x": 6,
+        "y": 0,
+        "w": 6,
+        "h": 4
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Successful 200",
+      "targets": [
+        {
+          "expr": "sum(api_requests_total{http_status=\"200\"})",
+          "legendFormat": "200",
+          "refId": "C"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Average Latency (s)",
+      "targets": [
+        {
+          "expr": "rate(api_request_duration_seconds_sum[1m]) / rate(api_request_duration_seconds_count[1m])",
+          "legendFormat": "Latency",
+          "refId": "D"
+        }
+      ],
+      "gridPos": {
+        "x": 6,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Requests per Status Code",
+      "targets": [
+        {
+          "expr": "rate(api_requests_total[1m])",
+          "legendFormat": "{{http_status}}",
+          "refId": "E"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      }
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  }
+}

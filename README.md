@@ -94,4 +94,4 @@ docker compose up --build
 - Add readiness/liveness probes
 
 # Grafana Visualisation 
-- ! [Metrics visualization](screenshots/grafana_visualisation.png)
+- ![ Metrics visualization](screenshots/grafana_visualisation.png)

@@ -92,3 +92,6 @@ docker compose up --build
 - Add Slack alerting with Alertmanager
 - Add support for multiple endpoints
 - Add readiness/liveness probes
+
+# Grafana Visualisation 
+- ! [Metrics visualization](screenshots/grafana_visualisation.png)
